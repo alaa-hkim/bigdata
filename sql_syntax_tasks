@@ -1,0 +1,18 @@
+######Task1######
+SELECT FirstName, LastName, COUNT(DISTINCT OrderID) AS N_OF_ORDERS
+FROM Employees
+INNER JOIN Orders ON Employees.EmployeeID = Orders.EmployeeID
+GROUP BY Employees.EmployeeID 
+ORDER BY COUNT(DISTINCT OrderID) DESC
+
+#############Task2############
+SELECT FirstName, LastName, Quantity AS SOLD_MOST_Beverages 
+FROM Employees
+INNER JOIN Orders ON Employees.EmployeeID = Orders.EmployeeID
+INNER JOIN OrderDetails ON OrderDetails.OrderID = Orders.OrderID
+INNER JOIN Products ON OrderDetails.ProductID = Products.ProductID
+WHERE CategoryID = 1
+GROUP BY Employees.EmployeeID
+ORDER BY Quantity DESC
+
+
